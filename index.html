@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="vi" class="is-locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thư gửi người yêu anh · 20.10</title>
+  <meta name="description" content="Một lá thư nhỏ nhân ngày 20 tháng 10, viết bằng cả trái tim, chỉ dành cho em.">
+  <meta name="theme-color" content="#fbe3ea">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Symbol library (petals, flowers, gradients) — filled by main.js -->
+  <svg id="svgDefs" class="svg-defs" aria-hidden="true" focusable="false"></svg>
+
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <canvas id="petals" aria-hidden="true"></canvas>
+  <div class="cursor" aria-hidden="true"><span></span></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro" id="intro">
+    <svg class="intro-waves" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path class="draw" pathLength="1" stroke-width="2.4" d="M-40,170 C120,140 220,60 330,95 C420,125 470,182 540,150 C570,136 590,122 610,104"/>
+      <path class="draw" pathLength="1" stroke-width="1" d="M-40,190 C140,170 230,96 332,122 C430,146 480,200 590,140"/>
+      <path class="draw" pathLength="1" stroke-width="2" d="M150,930 C200,820 300,752 380,796 C450,836 470,906 560,884"/>
+      <path class="draw" pathLength="1" stroke-width="2.4" d="M960,940 C1060,814 1250,770 1480,836"/>
+      <path class="draw" pathLength="1" stroke-width="1" d="M1010,950 C1100,850 1260,820 1480,868"/>
+      <path class="draw" pathLength="1" stroke-width="1.6" d="M1250,-20 C1300,90 1380,160 1480,182"/>
+    </svg>
+    <svg class="intro-branch intro-branch--tr" viewBox="0 0 500 500" aria-hidden="true"></svg>
+    <svg class="intro-branch intro-branch--bl" viewBox="0 0 500 500" aria-hidden="true"></svg>
+
+    <nav class="intro-nav" aria-label="Mục lục">
+      <a href="#opening">Lời mở</a>
+      <a href="#letter">Thư gửi em</a>
+      <a href="#stage">Lời cảm ơn</a>
+      <a href="#ending">Lời kết</a>
+    </nav>
+
+    <div class="intro-inner">
+      <p class="intro-kicker">Gửi đến <em data-name>em</em></p>
+      <h1 class="intro-title">
+        <span class="it-line gold">Thư gửi</span>
+        <span class="it-and"><i></i><em>người</em><i></i></span>
+        <span class="it-line gold">yêu anh</span>
+      </h1>
+      <p class="intro-date">20 . 10 . 2026</p>
+      <p class="intro-sub">Một lá thư nhỏ<br>viết bằng cả trái tim<br>chỉ dành cho Hoàng Hải Yến</p>
+      <button class="btn-pill" id="start" type="button"><span>Mở phong thư</span></button>
+    </div>
+  </section>
+
+  <!-- ============ FLOWER GARDEN TRANSITION ============ -->
+  <div class="garden" id="garden" aria-hidden="true"><div class="garden-bg"></div></div>
+
+  <main id="main">
+    <!-- 1. Màn hình mở đầu -->
+    <section class="hero" id="hero">
+      <div class="garland" id="garland" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow">20 · 10 · 2026</p>
+        <h2 class="hero-title">
+          <span class="gold hero-name">Gửi <span data-name>em</span>,</span>
+          <em>người phụ nữ của anh</em>
+        </h2>
+        <p class="hero-sub">20.10, một ngày để anh nói ra những điều vẫn luôn giữ trong lòng.</p>
+        <button class="btn-pill" id="openLetter" type="button"><span>Mở thư</span></button>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">Cuộn xuống<span></span></div>
+    </section>
+
+    <!-- 2. Lời mở -->
+    <section class="opening" id="opening">
+      <p class="label">Lời mở</p>
+      <p class="opening-text" data-scrub-words>Có những điều anh nghĩ đến mỗi ngày nhưng hiếm khi nói thành lời. Hôm nay anh muốn viết chúng ra, <em>chậm rãi, chỉ cho riêng em.</em></p>
+    </section>
+
+    <!-- 3. Thư gửi em -->
+    <section class="letter" id="letter">
+      <div class="letter-wrap">
+        <div class="letter-flowers" id="letterFlowers" aria-hidden="true"></div>
+        <article class="letter-card">
+          <p class="label">Thư gửi em</p>
+          <h3 class="letter-greet">For my darling</h3>
+          <p data-reveal>Anh không giỏi nói những lời hoa mỹ. Nhưng có một điều anh biết rất rõ: từ khi có em, <mark>những ngày bình thường của anh trở nên đáng nhớ hơn.</mark></p>
+          <p data-reveal>Em là người lắng nghe anh những lúc anh mệt nhất, là người nhắc anh ăn đúng bữa, ngủ đúng giờ, và là lý do khiến anh muốn trở thành một người tốt hơn. Em <em>luôn dành cho anh những điều tốt nhất, cho đi nhiều hơn và luôn nghĩ cho anh</em>. Anh rất biết ơn và trân trọng tình cảm của em ó.</p>
+          <p data-reveal>Ngày 20/10, người ta chúc nhau xinh đẹp và hạnh phúc. Anh cũng chúc em như thế. Nhưng hơn cả, anh mong em luôn <mark>được là chính mình,</mark> được yêu thương, được trân trọng, và không bao giờ phải gồng gánh một mình.</p>
+          <div class="letter-heart" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.2.3.6.3.8 0 .7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4 + 5. Lời cảm ơn & lời xin lỗi (pinned ink-bloom stage) -->
+    <section class="stage" id="stage">
+      <div class="stage-inner">
+        <div class="st-layer st-title">
+          <h2>
+            <span class="st-l">Những điều</span>
+            <span class="st-l">anh muốn</span>
+            <em class="st-l">cảm ơn em</em>
+          </h2>
+        </div>
+
+        <div class="st-layer st-thanks">
+          <ol>
+            <li><span class="n" data-nosplit>01 — 03</span><span>Cảm ơn em đã kiên nhẫn với anh,</span> <em>kể cả những lúc anh vụng về nhất.</em></li>
+            <li><span class="n" data-nosplit>02 — 03</span><span>Cảm ơn em vì những tin nhắn hỏi han</span> <em>rất nhỏ mà rất ấm.</em></li>
+            <li><span class="n" data-nosplit>03 — 03</span><span>Cảm ơn em đã dành</span> <em>siu nhiều tình cảm cho anh.</em></li>
+          </ol>
+        </div>
+
+        <div class="st-layer st-sorry">
+          <p class="st-kicker">Và… anh xin lỗi</p>
+          <p class="st-s">Xin lỗi vì có những lúc <em>vô tâm làm em buồn.</em></p>
+          <p class="st-s">Xin lỗi vì những lúc nổi nóng, <em>không đủ kiên nhẫn với em.</em></p>
+        </div>
+
+        <div class="st-layer st-promise">
+          <p class="st-p">Anh sẽ cố gắng để hoàn thiện bản thân hơn,</p>
+          <p class="st-p"><em>sửa từng chút một nhó.</em></p>
+        </div>
+
+        <div class="st-layer st-joke">
+          <p class="st-p">"Anh biết là anh sai</p>
+          <p class="st-p"><em>nhưng anh sai theo kiểu có 102"</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kỷ niệm — polaroids develop one by one -->
+    <section class="memories" id="memories">
+      <div class="mem-inner">
+        <h2 class="mem-title"><span>Những ngày</span><em>có nhau</em></h2>
+        <div class="mem-pile">
+          <figure class="polaroid" data-x="26" data-y="30" data-rot="-7" data-landscape>
+            <i class="tape"></i>
+            <div class="ph"><img src="assets/web/photo-1.jpg" alt="Hai đứa mình với đôi găng boxing" width="1600" height="1064" loading="lazy" decoding="async"></div>
+            <figcaption>Tuần 3 trận nặng 1 trận nhẹ</figcaption>
+          </figure>
+          <figure class="polaroid" data-x="74" data-y="31" data-rot="6">
+            <i class="tape"></i>
+            <div class="ph"><img src="assets/web/photo-2.jpg" alt="Ảnh selfie trong thang máy ngày lạnh" width="1200" height="1600" loading="lazy" decoding="async"></div>
+            <figcaption>Lạnh cóng</figcaption>
+          </figure>
+          <figure class="polaroid" data-x="37" data-y="70" data-rot="4">
+            <i class="tape"></i>
+            <div class="ph"><img src="assets/web/photo-3.jpg" alt="Hai đứa mình trong trung tâm thương mại" width="1199" height="1600" loading="lazy" decoding="async"></div>
+            <figcaption>Dia dia</figcaption>
+          </figure>
+          <figure class="polaroid" data-x="63" data-y="71" data-rot="-4">
+            <i class="tape"></i>
+            <div class="ph"><img src="assets/web/photo-4.jpg" alt="Bữa tối sinh nhật bên nhau" width="1200" height="1600" loading="lazy" decoding="async"></div>
+            <figcaption>Tích cực bao a nhé</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Lời kết -->
+    <section class="ending" id="ending">
+      <div class="ending-frame">
+        <div class="ending-flowers" id="endingFlowers" aria-hidden="true"></div>
+        <div class="ending-card">
+          <p class="end-kicker">Chúc mừng ngày</p>
+          <h2 class="end-big">
+            <span class="gold">20</span>
+            <em>tháng</em>
+            <span class="gold">10</span>
+          </h2>
+          <p class="end-text">Chúc mừng ngày 20 tháng 10, người yêu anh. Chúc em luôn hạnh phúc, vui vẻ, yêu đời nhó.</p>
+          <div class="end-date">
+            <p>Tháng Mười</p>
+            <div class="end-row"><span>Thứ Ba</span><b>20</b><span>2026</span></div>
+          </div>
+          <p class="end-sign">Ký tên</p>
+          <p class="signature" data-signature>Trần Khôi</p>
+          <button class="btn-pill btn-pill--sm" id="replay" type="button"><span>Đọc lại từ đầu</span></button>
+        </div>
+      </div>
+      <footer class="footer">Viết cho em · 20.10.2026</footer>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh" hidden>
+    <img alt="">
+    <button class="lb-close" type="button" aria-label="Đóng">×</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
