@@ -31,7 +31,7 @@
      ------------------------------------------------------- */
   let lenis = null;
   if (!reduced && window.Lenis) {
-    lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9, smoothWheel: true });
+    lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true, syncTouch: false });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
@@ -287,7 +287,7 @@ void main(){
     const uIntro = u('uIntro'), uBloom = u('uBloom'), uFade = u('uFade'), uWarm = u('uWarm');
 
     const resize = () => {
-      const scale = Math.min(devicePixelRatio || 1, 1.5) * 0.62;
+      const scale = Math.min(devicePixelRatio || 1, 1.25) * 0.5;
       canvas.width = Math.round(innerWidth * scale);
       canvas.height = Math.round(innerHeight * scale);
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -741,7 +741,7 @@ void main(){
     gsap.fromTo('.opening .label', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, scrollTrigger: { trigger: '.opening', start: 'top 70%' } });
     gsap.fromTo(openWords, { opacity: 0.1, y: 8, filter: 'blur(3px)' }, {
       opacity: 1, y: 0, filter: 'blur(0px)', stagger: 0.05, ease: 'none',
-      scrollTrigger: { trigger: '.opening-text', start: 'top 78%', end: 'bottom 45%', scrub: 1 },
+      scrollTrigger: { trigger: '.opening-text', start: 'top 78%', end: 'bottom 45%', scrub: 0.5 },
     });
 
     // LETTER — corner blooms grow in, then drift
@@ -750,12 +750,12 @@ void main(){
         { scale: 0, opacity: 0, rotation: (i, el) => +el.dataset.rot - 70 },
         {
           scale: 1, opacity: 1, rotation: (i, el) => +el.dataset.rot, ease: 'back.out(1.4)', stagger: 0.06,
-          scrollTrigger: { trigger: '.letter-wrap', start: gi < 2 ? 'top 85%' : 'bottom 110%', end: gi < 2 ? 'top 35%' : 'bottom 65%', scrub: 1.2 },
+          scrollTrigger: { trigger: '.letter-wrap', start: gi < 2 ? 'top 85%' : 'bottom 110%', end: gi < 2 ? 'top 35%' : 'bottom 65%', scrub: 0.6 },
         });
     });
     gsap.fromTo(letterFlowers.sides, { scale: 0, opacity: 0 }, {
       scale: 1, opacity: 1, stagger: 0.2,
-      scrollTrigger: { trigger: '.letter-wrap', start: 'top 60%', end: 'center 50%', scrub: 1 },
+      scrollTrigger: { trigger: '.letter-wrap', start: 'top 60%', end: 'center 50%', scrub: 0.5 },
     });
     gsap.from('.letter-card', { y: 80, opacity: 0, duration: 1.4, ease: 'power3.out', scrollTrigger: { trigger: '.letter-card', start: 'top 85%' } });
     gsap.from('.letter-card .label', { opacity: 0, y: 16, duration: 1, scrollTrigger: { trigger: '.letter-card', start: 'top 70%' } });
@@ -787,7 +787,7 @@ void main(){
 
     const st = gsap.timeline({
       defaults: { ease: 'power2.out' },
-      scrollTrigger: { trigger: '#stage', start: 'top top', end: () => '+=' + innerHeight * 9.5, pin: true, scrub: 1, anticipatePin: 1 },
+      scrollTrigger: { trigger: '#stage', start: 'top top', end: () => '+=' + innerHeight * 9.5, pin: true, scrub: 0.5, anticipatePin: 1 },
     });
     st.to(U, { bloom: 1.3, duration: 2.4, ease: 'sine.inOut' }, 0)
       .fromTo(titleLines, { opacity: 0, y: 50, filter: 'blur(14px)' }, { ...blurIn, duration: 1, stagger: 0.3 }, 1.2)
@@ -824,7 +824,7 @@ void main(){
     });
     const mt = gsap.timeline({
       defaults: { ease: 'power3.out' },
-      scrollTrigger: { trigger: '#memories', start: 'top top', end: () => '+=' + innerHeight * 5, pin: true, scrub: 1, anticipatePin: 1 },
+      scrollTrigger: { trigger: '#memories', start: 'top top', end: () => '+=' + innerHeight * 5, pin: true, scrub: 0.5, anticipatePin: 1 },
     });
     mt.fromTo('.mem-title > *', { opacity: 0, y: 60, filter: 'blur(12px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, stagger: 0.25 }, 0);
     polaroids.forEach((p, i) => {
